@@ -105,7 +105,15 @@
 				color: #fff;
 				font-size: 26px;
 				left: 8em;
-				bottom: .6em;
+				bottom: 1.5em;
+			}
+
+			.type {
+				position: absolute;
+				color: #fff;
+				font-size: 15px;
+				left: 14em;
+				bottom: 1em;
 			}
 		}
 		
@@ -183,9 +191,10 @@
 <div class="vflex client">
 	<div class="profile">
 		<div class="img-wrapper">
-			<img src="sarah.jpg" alt="sarah">
+			<img src="sarah2.jpg" alt="sarah">
 		</div>
 		<div class="name">{ClientName[$userType]}</div>
+		<div class="type">Cardiologue</div>
 	</div>
 	<div class="flex grid1">
 		<div class="container patients">
