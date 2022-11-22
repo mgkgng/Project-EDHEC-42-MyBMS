@@ -227,6 +227,32 @@
 			.forum {
 				margin-top: 0;
 				width: 900px;
+
+				.forum-body {
+					width: 90%;
+					height: 85%;
+					background-color: #fff;
+					border: 2px solid #000;
+					border-radius: .2em;
+
+					.choice {
+						width: 100%;
+						height: 2em;
+						margin: .8em 0;
+						background-color: rgb(230, 230, 230);
+						justify-content: center;
+						align-items: center;
+
+						select {
+							height: 1.5em;
+						}
+					}
+					.content {
+						width: 100%;
+						height: 89.5%;
+						background-color: rgb(230, 230, 230);
+					}
+				}
 			}
 		}
 	}
@@ -241,6 +267,7 @@
 	let password = "";
 	let loaded = false;
 	let searchResult = [];
+	let speciality = "";
 
 	onMount(() => {
 		let cookie = document.cookie;
@@ -370,12 +397,28 @@
 			</div>
 		</div>
 	</div>
-	
 	<div class="flex func">
 		<div class="wrap-container forum">
 			<h1>Forum</h1>
+			<div class="forum-body">
+				<div class="flex choice">
+					<p>Sélectionnez la spécialité:</p>
+					<select id="standard-select">
+						<option value="Option 1">Option 1</option>
+						<option value="Option 2">Option 2</option>
+						<option value="Option 3">Option 3</option>
+						<option value="Option 4">Option 4</option>
+						<option value="Option 5">Option 5</option>
+						<option value="Option length">Option that has too long of a value to fit</option>
+					</select>
+				</div>
+				<div class="content">
+					<h2>Spécialité {speciality}</h2>
+					<div class="list">
+					</div>
+				</div>
+			</div>
 		</div>
-		
 	</div>
 </div>
 {/if}
