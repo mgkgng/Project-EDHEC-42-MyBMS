@@ -24,10 +24,9 @@
 	
 			display: flex;
 			flex-direction: column;
-	
 			justify-content: center;
-	
 			gap: .2em;
+
 			h2 { padding-left: 3em; }
 
 			.login-box {
@@ -38,6 +37,7 @@
 				border-radius: .3em;
 
 				.input-name {
+					min-width: 120px;
 					p { padding-bottom: .1em; }
 				}
 				.input {
@@ -99,23 +99,22 @@
 			}
 		}
 	}
-	
-
 </style>
 
 <script>
     import { goto } from "$app/navigation";
-	import { UserType, ClientName } from "$lib/store.js";
+	import { userType, UserType, ClientName } from "$lib/store.js";
     import { onMount } from "svelte";
 
-	let userType = 0;
 	let id = "";
 	let password = "";
+	let loaded =false;
 
 	onMount(() => {
 		let cookie = document.cookie;
 		if (cookie)
-			userType = parseInt(cookie.split('=')[1]);
+			$userType = parseInt(cookie.split('=')[1]);
+		loaded = true;
 	});
 
 </script>
@@ -125,7 +124,8 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-{#if userType == UserType.Unknown}
+{#if loaded}
+{#if $userType == UserType.Unknown}
 <div class="flex index">
 	<div class="slogan">
 		<i style="font-size: 40px;">
@@ -144,7 +144,6 @@
 				<input type="password" bind:value={password}>
 			</div>
 			<button on:click={() => {
-				console.log(password);
 				if (id == "doctor" && password == "mybmsdoctor")
 					document.cookie = "userType=" + UserType.Doctor;
 				else if (id == "patient" && password == "mybmspatient")
@@ -169,16 +168,12 @@
 		<div class="img-wrapper">
 			<img src="" alt="">
 		</div>
-		<div class="name">{ClientName[userType]}</div>
+		<div class="name">{ClientName[$userType]}</div>
 		
 	</div>
-	
-	<button on:click={() => {
-		document.cookie = 'userType=; Max-Age=-99999999;';  
-		window.location.reload();
-	}}>Logout</button>
 	<div class="actu">
 		<h2>Actualités</h2>
 	</div>
 </div>
+{/if}
 {/if}

@@ -7,3 +7,5 @@ export const UserType = {
 }
 
 export const ClientName = [undefined, "Samuel Philippe", "Sarah Duval"];
+
+export const userType = writable(UserType.Unknown);

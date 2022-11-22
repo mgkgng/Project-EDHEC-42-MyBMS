@@ -16,7 +16,7 @@
 </script>
 
 <div class="app">
-	<Header />
+	<Header/>
 	<main><slot /></main>
 	<Footer />
 </div>
