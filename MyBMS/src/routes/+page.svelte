@@ -1,9 +1,9 @@
 <style lang="scss">
 	.container {
-		display: flex;
+		width: 100%;
+		height: 100%;
 		justify-content: center;
 		align-items: center;
-
 		color: #000;
 
 		gap: 3em;
@@ -95,9 +95,19 @@
 
 <script>
     import { goto } from "$app/navigation";
+	import { UserType, ClientName } from "$lib/store.js";
+    import { onMount } from "svelte";
 
+	let userType = 0;
 	let id = "";
 	let password = "";
+
+	onMount(() => {
+		let cookie = document.cookie;
+		if (cookie)
+			userType = parseInt(cookie.split('=')[1]);
+	});
+
 </script>
 
 <svelte:head>
@@ -105,7 +115,8 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="container">
+<div class="flex container">
+	{#if userType == UserType.Unknown}
 	<div class="slogan">
 		<i style="font-size: 40px;">
 			"Ensemble, nous pourrons vaincre."
@@ -124,7 +135,12 @@
 			</div>
 			<div class="button-box">
 				<button on:click={() => {
-					goto('/home');
+					console.log(password);
+					if (id == "doctor" && password == "mybmsdoctor")
+						document.cookie = "userType=" + UserType.Doctor;
+					else if (id == "patient" && password == "mybmspatient")
+						document.cookie = "userType=" + UserType.Patient;
+					window.location.reload();
 				}}>Connex.</button>
 			<a href="/">S'enregistrer</a>
 			</div>
@@ -133,4 +149,13 @@
 			<a href="/">Mot de passe oublié?</a>
 		</div>
 	</div>
+	{:else}
+		<h2>
+			Hello {ClientName[userType]} !
+		</h2>
+		<button on:click={() => {
+    		document.cookie = 'userType=; Max-Age=-99999999;';  
+			window.location.reload();
+		}}>Logout</button>
+	{/if}
 </div>

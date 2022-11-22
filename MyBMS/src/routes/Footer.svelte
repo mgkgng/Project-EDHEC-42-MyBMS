@@ -14,10 +14,7 @@
 		.lang {
 			padding-left: .8em;
 
-			.choice {
-				cursor: pointer;
-			}
-
+			.choice { cursor: pointer; }
 			.selected {
 				padding-bottom: .1em;
 				border-bottom: 1px solid #6c6c6c;
@@ -29,7 +26,6 @@
 <script>
 	let langSet = ["English", "Français", "Deutsch", "Español", "Italiano"];
 	let langSelected = "Français";
-
 </script>
 
 <footer>

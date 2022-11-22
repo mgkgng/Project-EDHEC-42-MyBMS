@@ -17,8 +17,6 @@
 
 <div class="app">
 	<Header />
-	<main>
-		<slot />
-	</main>
+	<main><slot /></main>
 	<Footer />
 </div>

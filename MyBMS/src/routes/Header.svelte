@@ -24,7 +24,6 @@
 		}
 	}
 
-
 	.class {
 		height: 100%;
 	}
@@ -38,8 +37,7 @@
 
 <header>
 	<div class="flex logo" on:click={() => { goto('/'); }}>
-		<img class="logo" src="/logo.png" alt="SvelteKit" />
+		<img src="/logo.png" alt="logo" />
 		<h2>Brystol Myers Squibb / MyBMS</h2>
 	</div>
 </header>
-
