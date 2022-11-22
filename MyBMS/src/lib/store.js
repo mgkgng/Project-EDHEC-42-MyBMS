@@ -11,14 +11,14 @@ export const ClientName = [undefined, "Samuel Philippe", "Sarah Duval"];
 export const userType = writable(UserType.Unknown);
 
 export const PatientList = [
-	{ name: "Yoann Noyer", city: "Antibes", prescriptions: ["c"]},
-	{ name: "Emilio Barsotti", city: "Monaco", prescriptions: ["b"]},
-	{ name: "Safa Rahim", city: "Nice", prescriptions: ["a", "b"]},
-	{ name: "Jessica Lemoine", city: "Nice", prescriptions: ["d", "a"]},
-	{ name: "Jonathan Dupuy", city: "Nice", prescriptions: ["a", "c", "e"]},
-	{ name: "Carmen Rosales", city: "Cannes", prescriptions: ["d"]},
-	{ name: "Fatma Fabre", city: "Nice", prescriptions: ["c", "f"]},
-	{ name: "Agnès Cattaneo", city: "Cannes", prescriptions: ["a", "b"]},
-	{ name: "Mathias De Leon", city: "Antibes", prescriptions: ["a", "d"]},
-	{ name: "Tayeb Fierro", city: "Monaco", prescriptions: ["c", "d"]},
+	{ name: "Yoann Noyer", city: "Antibes", prescriptions: ["eliquis"]},
+	{ name: "Emilio Barsotti", city: "Monaco", prescriptions: ["imnovid"]},
+	{ name: "Safa Rahim", city: "Nice", prescriptions: ["hydrea", "imnovid"]},
+	{ name: "Jessica Lemoine", city: "Nice", prescriptions: ["onureg", "hydrea"]},
+	{ name: "Jonathan Dupuy", city: "Nice", prescriptions: ["hydrea", "eliquis", "reblozyl"]},
+	{ name: "Carmen Rosales", city: "Cannes", prescriptions: ["onureg"]},
+	{ name: "Fatma Fabre", city: "Nice", prescriptions: ["eliquis", "vidaza"]},
+	{ name: "Agnès Cattaneo", city: "Cannes", prescriptions: ["hydrea", "imnovid"]},
+	{ name: "Mathias De Leon", city: "Antibes", prescriptions: ["hydrea", "onureg"]},
+	{ name: "Tayeb Fierro", city: "Monaco", prescriptions: ["eliquis", "onureg"]},
 ];
