@@ -11,7 +11,7 @@ export const ClientName = [undefined, "Samuel Philippe", "Sarah Duval"];
 export const PatientList = [
 	{ name: "Yoann Noyer", city: "Antibes", age: 45, sex: 'M', drug: ["eliquis"]},
 	{ name: "Emilio Barsotti", city: "Monaco", age: 65, sex: 'M', drug: ["imnovid"]},
-	{ name: "Safa Rahim", city: "Nice", age: 52, sex: 'M',  drug: ["hydrea", "imnovid"]},
+	{ name: "Safa Rahim", city: "Nice", age: 52, sex: 'F',  drug: ["hydrea", "imnovid"]},
 	{ name: "Jessica Lemoine", city: "Nice", age: 38, sex: 'F',  drug: ["onureg", "hydrea"]},
 	{ name: "Jonathan Dupuy", city: "Nice", age: 77, sex: 'M',  drug: ["hydrea", "eliquis", "reblozyl"]},
 	{ name: "Carmen Rosales", city: "Cannes", age: 53, sex: 'F',  drug: ["onureg"]},
