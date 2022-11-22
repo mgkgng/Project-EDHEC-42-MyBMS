@@ -20,3 +20,5 @@ export const PatientList = [
 	{ name: "Mathias De Leon", city: "Antibes", age: 69, sex: 'M',  drug: ["hydrea", "onureg"]},
 	{ name: "Tayeb Fierro", city: "Monaco", age: 70, sex: 'M',  drug: ["eliquis", "onureg"]},
 ];
+
+export const userType = writable(UserType.Unknown);
