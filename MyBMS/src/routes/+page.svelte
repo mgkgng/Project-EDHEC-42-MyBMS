@@ -140,18 +140,51 @@
 			}
 		}
 		
-		.grid1 {
-			width: 100%;
+		.first {
 			z-index: 1;
+			gap: 0;
+
 			.patients {
+				.list {
+					width: 100%;
+					.line {
+						width: 100%;
+						display: grid;
+						grid-template-columns: 20% 10% 10% 10% 50%;
+					}
+				}
+			}
+			.actu {
+				.list {
+					overflow-y: scroll;
+					.line {
+						display: grid;
+						grid-template-columns: 80% 20%;
+						border-top: 1px solid #000;
+						padding: 2em .5em;
+	
+						&:nth-child(odd) {
+							background: rgb(230, 230, 230);
+						}
+	
+					}
+				}
 			}
 		}
+
+		.second {
+			gap: 0;
+			.forum {
+				width: 66%;
+			}
+		}
+
 	}
 </style>
 
 <script>
     import { goto } from "$app/navigation";
-	import { userType, UserType, ClientName } from "$lib/store.js";
+	import { userType, UserType, ClientName, PatientList } from "$lib/store.js";
     import { onMount } from "svelte";
 
 	let id = "";
@@ -223,14 +256,67 @@
 			<img src="banner_profile2.png" alt="banner	">
 		</div>
 	</div>
-	<div class="flex grid1">
+	<div class="first flex">
 		<div class="container patients">
-			<h2>La liste des patients</h2>
-			<div class="list"></div>
+			<h1>La liste des patients</h1>
+			<div class="list">
+				<div class="line">
+					<p>Nom</p>
+					<p>Ville</p>
+					<p>Age</p>
+					<p>Sexe</p>
+					<p>Prescriptions</p>
+				</div>
+				{#each PatientList as patient}
+				<div class="line">
+					<p>{patient.name}</p>
+					<p>{patient.city}</p>
+					<p>{patient.age}</p>
+					<p>{patient.sex}</p>
+					<p>{patient.drug}</p>
+				</div>
+				{/each}
+			</div>
 		</div>
 		<div class="container actu">
-			<h2>Actualités</h2>
+			<h1>Actualités BMS</h1>
+			<div class="list">
+				<div class="line">
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Data-at-ASH-2022-Highlight-Innovative-Therapeutic-Platforms-Across-a-Range-of-Blood-Diseases/default.aspx">Bristol Myers Squibb Data at ASH 2022 Highlight Innovative Therapeutic Platforms Across a Range of Blood Diseases</a>
+					<p>11/21/2022</p>
+				</div>
+				<div class="line">
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-to-Participate-in-the-Wolfe-Research-Healthcare-Conference/default.aspx">Bristol Myers Squibb to Participate in the Wolfe Research Healthcare Conference</a>
+					<p>11/09/2022</p>
+				</div>
+				<div class="line">
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Data-Reinforcing-Impact-of-Bristol-Myers-Squibb-Cardiovascular-Portfolio-to-be-Presented-at-American-Heart-Association-Scientific-Sessions-2022/default.aspx">
+						Data Reinforcing Impact of Bristol Myers Squibb Cardiovascular Portfolio to be Presented at American Heart Association Scientific Sessions 2022</a>
+					<p>11/02/2022</p>
+				</div>
+				<div class="line">
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Announces-Positive-Topline-Results-of-Phase-3-COMMANDS-Trial/default.aspx">Bristol Myers Squibb Announces Positive Topline Results of Phase 3 COMMANDS Trial</a>
+					<p>10/31/2022</p>
+				</div>
+				<div class="line">
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/New-Zeposia-ozanimod-Data-Highlight-COVID-19-Outcomes-and-Preservation-of-Long-Term-Cognitive-Function-from-Separate-Analyses-in-Patients-with-Relapsing-Forms-of-Multiple-Sclerosis/default.aspx">New Zeposia (ozanimod) Data Highlight COVID-19 Outcomes and Preservation of Long-Term Cognitive Function from Separate Analyses in Patients with Relapsing Forms of Multiple Sclerosis</a>
+					<p>10/26/2022</p>
+				</div>
+				<div class="line">
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Reports-Third-Quarter-Financial-Results-for-2022/default.aspx">Bristol Myers Squibb Reports Third Quarter Financial Results for 2022</a>
+					<p>10/25/2022</p>
+				</div>
+			</div>
 		</div>
+		<div class="container"></div>
+	</div>
+	<div class="second flex">
+		<div class="container"></div>
+
+		<div class="container forum">
+			<h1>Forum</h1>
+		</div>
+		
 	</div>
 </div>
 {/if}

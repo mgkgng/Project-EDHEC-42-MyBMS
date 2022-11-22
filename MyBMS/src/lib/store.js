@@ -11,14 +11,14 @@ export const ClientName = [undefined, "Samuel Philippe", "Sarah Duval"];
 export const userType = writable(UserType.Unknown);
 
 export const PatientList = [
-	{ name: "Yoann Noyer", city: "Antibes", prescriptions: ["eliquis"]},
-	{ name: "Emilio Barsotti", city: "Monaco", prescriptions: ["imnovid"]},
-	{ name: "Safa Rahim", city: "Nice", prescriptions: ["hydrea", "imnovid"]},
-	{ name: "Jessica Lemoine", city: "Nice", prescriptions: ["onureg", "hydrea"]},
-	{ name: "Jonathan Dupuy", city: "Nice", prescriptions: ["hydrea", "eliquis", "reblozyl"]},
-	{ name: "Carmen Rosales", city: "Cannes", prescriptions: ["onureg"]},
-	{ name: "Fatma Fabre", city: "Nice", prescriptions: ["eliquis", "vidaza"]},
-	{ name: "Agnès Cattaneo", city: "Cannes", prescriptions: ["hydrea", "imnovid"]},
-	{ name: "Mathias De Leon", city: "Antibes", prescriptions: ["hydrea", "onureg"]},
-	{ name: "Tayeb Fierro", city: "Monaco", prescriptions: ["eliquis", "onureg"]},
+	{ name: "Yoann Noyer", city: "Antibes", age: 45, sex: 'M', drug: ["eliquis"]},
+	{ name: "Emilio Barsotti", city: "Monaco", age: 65, sex: 'M', drug: ["imnovid"]},
+	{ name: "Safa Rahim", city: "Nice", age: 52, sex: 'M',  drug: ["hydrea", "imnovid"]},
+	{ name: "Jessica Lemoine", city: "Nice", age: 38, sex: 'F',  drug: ["onureg", "hydrea"]},
+	{ name: "Jonathan Dupuy", city: "Nice", age: 77, sex: 'M',  drug: ["hydrea", "eliquis", "reblozyl"]},
+	{ name: "Carmen Rosales", city: "Cannes", age: 53, sex: 'F',  drug: ["onureg"]},
+	{ name: "Fatma Fabre", city: "Nice", age: 48, sex: 'F',  drug: ["eliquis", "vidaza"]},
+	{ name: "Agnès Cattaneo", city: "Cannes", age: 99, sex: 'F',  drug: ["hydrea", "imnovid"]},
+	{ name: "Mathias De Leon", city: "Antibes", age: 69, sex: 'M',  drug: ["hydrea", "onureg"]},
+	{ name: "Tayeb Fierro", city: "Monaco", age: 70, sex: 'M',  drug: ["eliquis", "onureg"]},
 ];
