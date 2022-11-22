@@ -78,9 +78,9 @@
 		.profile {
 			position: relative;
 			width: 100%;
-			height: 180px;
+			height: 220px;
+			// padding: 1.5em 1.5em;
 			background-color: gray;
-			padding: 1.5em 1.5em;
 
 			display: flex;
 			align-items: center;
@@ -91,6 +91,8 @@
 				width: 9em;
 				height: 11em;
 				padding: .5em;
+				z-index: 1;
+				margin-left: 2em;
 				
 				img {
 					width: 100%;
@@ -105,7 +107,8 @@
 				color: #fff;
 				font-size: 26px;
 				left: 8em;
-				bottom: 1.5em;
+				bottom: 1em;
+				z-index: 1;
 			}
 
 			.type {
@@ -113,13 +116,33 @@
 				color: #fff;
 				font-size: 15px;
 				left: 14em;
-				bottom: 1em;
+				bottom: .6em;
+				z-index: 1;
+			}
+
+			.banner {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+
+				.cover {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					backdrop-filter: blur(6px);
+				}
+				img {
+					width: 100%;
+					height: 100%;
+					z-index: 0;
+					object-fit: cover;
+				}
 			}
 		}
 		
 		.grid1 {
 			width: 100%;
-
+			z-index: 1;
 			.patients {
 			}
 		}
@@ -134,6 +157,7 @@
 	let id = "";
 	let password = "";
 	let loaded =false;
+	$: console.log(ClientName, $userType);
 
 	onMount(() => {
 		let cookie = document.cookie;
@@ -141,7 +165,6 @@
 			$userType = parseInt(cookie.split('=')[1]);
 		loaded = true;
 	});
-
 </script>
 
 <svelte:head>
@@ -195,6 +218,10 @@
 		</div>
 		<div class="name">{ClientName[$userType]}</div>
 		<div class="type">Cardiologue</div>
+		<div class="banner">
+			<div class="cover"></div>
+			<img src="banner_profile1.png" alt="banner	">
+		</div>
 	</div>
 	<div class="flex grid1">
 		<div class="container patients">
