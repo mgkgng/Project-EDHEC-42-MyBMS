@@ -80,21 +80,32 @@
 			width: 100%;
 			height: 180px;
 			background-color: gray;
-			padding: 1em 1.5em;
+			padding: 1.5em 1.5em;
+
+			display: flex;
+			align-items: center;
 
 			.img-wrapper {
 				border: 2px solid $white-t6;
 				border-radius: .3em;
 				width: 9em;
-				height: 100%;
+				height: 11em;
+				padding: .5em;
+				
+				img {
+					width: 100%;
+					height: 100%;
+					border-radius: .2em;
+					object-fit: cover;
+				}
 			}
 
 			.name {
 				position: absolute;
 				color: #fff;
 				font-size: 26px;
-				left: 7.2em;
-				bottom: .5em;
+				left: 8em;
+				bottom: .6em;
 			}
 		}
 		
@@ -172,7 +183,7 @@
 <div class="vflex client">
 	<div class="profile">
 		<div class="img-wrapper">
-			<img src="" alt="">
+			<img src="sarah.jpg" alt="sarah">
 		</div>
 		<div class="name">{ClientName[$userType]}</div>
 	</div>
@@ -181,10 +192,9 @@
 			<h2>La liste des patients</h2>
 			<div class="list"></div>
 		</div>
-		<div class="actu">
+		<div class="container actu">
 			<h2>Actualités</h2>
 		</div>
-
 	</div>
 </div>
 {/if}

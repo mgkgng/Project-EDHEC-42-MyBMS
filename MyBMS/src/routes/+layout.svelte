@@ -9,6 +9,7 @@
 	
 	main {
 		background-color: $mauve;
+		padding-bottom: 80px;
 	}
 </style>
 
