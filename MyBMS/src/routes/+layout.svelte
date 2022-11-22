@@ -1,10 +1,13 @@
 <style lang="scss">
+	.app {
+		font-family: 'urbanist';
+	}
+	
 	main {
 		height: 100vh;
 		width: 100vw;
 		background-color: $mauve;
 	}
-
 </style>
 
 <script>
@@ -12,9 +15,10 @@
 	import Footer from './Footer.svelte';
 </script>
 
-<Header />
-<main>
-	<slot />
-</main>
-<Footer />
-
+<div class="app">
+	<Header />
+	<main>
+		<slot />
+	</main>
+	<Footer />
+</div>

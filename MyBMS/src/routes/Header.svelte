@@ -5,7 +5,6 @@
 		height: 65px;
 		background-color: #fff;
 		
-		font-family: 'urbanist';
 
 		.logo {
 			display: flex;
