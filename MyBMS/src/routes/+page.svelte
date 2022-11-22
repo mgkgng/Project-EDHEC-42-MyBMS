@@ -1,38 +1,41 @@
 <style lang="scss">
-	.container {
+	.index {
 		width: 100%;
 		height: 100%;
 		justify-content: center;
 		align-items: center;
 		color: #000;
 
-		gap: 3em;
+		gap: 2em;
 		user-select: none;
-	}
 
-	.slogan {
-		font-size: 30px;
-	}
+		.slogan {
+			font-size: 30px;
+		}
+	
+		.login {
+			width: 450px;
+			height: 300px;
+			background-color: #fff;
+	
+			border-radius: .4em;
+	
+			display: flex;
+			flex-direction: column;
+	
+			justify-content: center;
+			align-items: center;
+	
+			gap: .2em;
+	
+		
 
-	.login {
-		width: 30em;
-		height: 250px;
-		background-color: #fff;
-
-		border-radius: .4em;
-
-		display: flex;
-		flex-direction: column;
-
-		justify-content: center;
-		align-items: center;
-
-		gap: .2em;
-
-		h2 {
-			margin: .5em;
+			h2 {
+				margin: .5em;
+			}
 		}
 	}
+
 
 	.flemme {
 		float: right;
@@ -88,7 +91,34 @@
 		flex-direction: column;
 	}
 
+	.client {
+		padding-top: 60px;
+		width: 100%;
+		height: 100%;
 
+		.profile {
+			position: relative;
+			width: 100%;
+			height: 180px;
+			background-color: gray;
+			padding: 1em 1.5em;
+
+			.img-wrapper {
+				border: 2px solid $white-t6;
+				border-radius: .3em;
+				width: 9em;
+				height: 100%;
+			}
+
+			.name {
+				position: absolute;
+				color: #fff;
+				font-size: 26px;
+				left: 7.2em;
+				bottom: .5em;
+			}
+		}
+	}
 	
 
 </style>
@@ -115,8 +145,8 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="flex container">
-	{#if userType == UserType.Unknown}
+{#if userType == UserType.Unknown}
+<div class="flex index">
 	<div class="slogan">
 		<i style="font-size: 40px;">
 			"Ensemble, nous pourrons vaincre."
@@ -149,13 +179,22 @@
 			<a href="/">Mot de passe oublié?</a>
 		</div>
 	</div>
-	{:else}
-		<h2>
-			Hello {ClientName[userType]} !
-		</h2>
-		<button on:click={() => {
-    		document.cookie = 'userType=; Max-Age=-99999999;';  
-			window.location.reload();
-		}}>Logout</button>
-	{/if}
 </div>
+{:else}
+<div class="vflex client">
+	<div class="profile">
+		<div class="img-wrapper">
+			<img src="" alt="">
+		</div>
+		<div class="name">{ClientName[userType]}</div>
+	</div>
+	
+	<button on:click={() => {
+		document.cookie = 'userType=; Max-Age=-99999999;';  
+		window.location.reload();
+	}}>Logout</button>
+	<div class="actu">
+		<h2>Actualités</h2>
+	</div>
+</div>
+{/if}
