@@ -1,18 +1,23 @@
 <style lang="scss">
 	.index {
 		width: 100%;
-		justify-content: center;
-		align-items: center;
+		height: 90vh;
 		color: #000;
 
-		gap: 1.5em;
+		gap: 3em;
 		user-select: none;
 
 		.slogan {
+			position: absolute;
+			top: 40%;
+			left: 10%;
 			font-size: 30px;
 		}
 	
 		.login {
+			position: absolute;
+			top: 30%;
+			left: 50%;
 			width: 450px;
 			height: 300px;
 			background-color: #fff;
@@ -157,6 +162,7 @@
 					overflow-y: scroll;
 					border: 2px solid #000;
 					font-size: 13px;
+
 					.line {
 						text-align: center;
 						width: 100%;
@@ -191,7 +197,6 @@
 			}
 			.where {
 				margin-left: 0;
-
 				.input {
 					width: 80%;
 					gap: 0.2em;
@@ -200,7 +205,7 @@
 					margin-bottom: .5em;
 					input {
 						width: 80%;
-						padding-left: .3em;
+						padding-left: .5em;
 						height: 2em;
 						border-radius: .2em;
 					}
@@ -222,6 +227,10 @@
 						top: 45%;
 						left: 35%;
 					}
+					.line {
+						display: grid;
+						grid-template-columns: 45% 55%;
+					}
 				}
 			}
 			.forum {
@@ -230,7 +239,7 @@
 
 				.forum-body {
 					width: 90%;
-					height: 85%;
+					height: 620px;
 					background-color: #fff;
 					border: 2px solid #000;
 					border-radius: .2em;
@@ -249,8 +258,34 @@
 					}
 					.content {
 						width: 100%;
-						height: 89.5%;
+						height: 563px;
 						background-color: rgb(230, 230, 230);
+						justify-content: center;
+						align-items: center;
+						gap: 0;
+
+						h2 {
+							background-color: #fff;
+							padding: .5em;
+							border: 2px solid #000;
+						}
+
+						.list {
+							background-color: #fff;
+							width: 75%;
+							height: 70%;
+							border: 2px solid #000;
+							padding: 0 2em;
+
+							.line {
+								width: 100%;
+								height: 2em;
+								padding: .2em 0;
+								border-bottom: 1px solid #000;
+								display: grid;
+								grid-template-columns: 40% 12% 12% 12% 12% 12%;
+							}
+						}
 					}
 				}
 			}
@@ -259,15 +294,19 @@
 </style>
 
 <script>
-    import { goto } from "$app/navigation";
-	import { userType, UserType, ClientName, PatientList, ForumTopics } from "$lib/store.js";
+	import { userType, UserType, ClientName, PatientList, ForumTopics, PharmaciesInCity } from "$lib/store.js";
     import { onMount } from "svelte";
 
 	let id = "";
 	let password = "";
 	let loaded = false;
+	let searchCode = "";
 	let searchResult = [];
 	let speciality = "";
+
+	function cutTitle(title) {
+		return ((title.length > 20) ? title.substr(0, 18) + '...' : title);
+	}
 
 	onMount(() => {
 		let cookie = document.cookie;
@@ -386,13 +425,26 @@
 		<div class="wrap-container where">
 			<h1>Où trouver nos produits</h1>
 			<div class="flex input">
-				<input type="text" placeholder="Mettez le nom de la ville">
-				<button>Recherche</button>
+				<input type="text" placeholder="Mettez votre code postale" bind:value={searchCode}>
+				<button on:click={() => {
+					if (PharmaciesInCity.has(searchCode))
+						searchResult = PharmaciesInCity.get(searchCode);
+				}}>Recherche</button>
 			</div>
 			<div class="list">
 				{#if !searchResult.length}
-				<div class="no-result">Pas de résultat</div>
+				<div class="no-result">Aucun résultat</div>
 				{:else}
+				<div class="line">
+					<p>Nom</p>
+					<p>address</p>
+				</div>
+				{#each searchResult as result}
+				<div class="line">
+					<p>{result.name}</p>
+					<p>{result.address}</p>
+				</div>
+				{/each}
 				{/if}
 			</div>
 		</div>
@@ -403,18 +455,37 @@
 			<div class="forum-body">
 				<div class="flex choice">
 					<p>Sélectionnez la spécialité:</p>
-					<select id="standard-select">
+					<select>
 						<option value="Option 1">Option 1</option>
 						<option value="Option 2">Option 2</option>
 						<option value="Option 3">Option 3</option>
 						<option value="Option 4">Option 4</option>
 						<option value="Option 5">Option 5</option>
-						<option value="Option length">Option that has too long of a value to fit</option>
+						<option value="Option 6">Option that has too long of a value to fit</option>
 					</select>
 				</div>
-				<div class="content">
+				<div class="vflex content">
 					<h2>Spécialité {speciality}</h2>
 					<div class="list">
+						<div class="line" style="font-size: 13px;">
+							<p>Titre</p>
+							<p>Auteur</p>
+							<p>Likes</p>
+							<p>N° de Cmts</p>
+							<p>N° de visites</p>
+							<p>Date de Màj</p>
+						</div>
+						{#each ForumTopics as topic}
+						<div class="line">
+							<!-- <p>{cutTitle(topic.title)}</p> -->
+							<p>{topic.author}</p>
+							<p>{topic.like}</p>
+							<p>{topic.commentNb}</p>
+							<p>{topic.visitNb}</p>
+							<p>{topic.date}</p>
+						</div>
+						{/each}
+						<div></div>
 					</div>
 				</div>
 			</div>
