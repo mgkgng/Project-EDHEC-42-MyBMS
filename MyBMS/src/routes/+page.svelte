@@ -276,6 +276,7 @@
 							height: 70%;
 							border: 2px solid #000;
 							padding: 0 2em;
+							overflow-y: scroll;
 
 							.line {
 								width: 100%;
@@ -305,7 +306,7 @@
 	let speciality = "";
 
 	function cutTitle(title) {
-		return ((title.length > 20) ? title.substr(0, 18) + '...' : title);
+		return ((title.length > 30) ? title.substr(0, 28) + '...' : title);
 	}
 
 	onMount(() => {
@@ -471,13 +472,13 @@
 							<p>Titre</p>
 							<p>Auteur</p>
 							<p>Likes</p>
-							<p>N° de Cmts</p>
-							<p>N° de visites</p>
+							<p>Cmts</p>
+							<p>Vues</p>
 							<p>Date de Màj</p>
 						</div>
 						{#each ForumTopics as topic}
 						<div class="line">
-							<!-- <p>{cutTitle(topic.title)}</p> -->
+							<p>{cutTitle(topic.title)}</p>
 							<p>{topic.author}</p>
 							<p>{topic.like}</p>
 							<p>{topic.commentNb}</p>
