@@ -233,7 +233,8 @@
 </style>
 
 <script>
-	import { userType, UserType, ClientName, PatientList } from "$lib/store.js";
+    import { goto } from "$app/navigation";
+	import { userType, UserType, ClientName, PatientList, ForumTopics } from "$lib/store.js";
     import { onMount } from "svelte";
 
 	let id = "";
@@ -302,7 +303,7 @@
 		<div class="type">Cardiologue</div>
 		<div class="banner">
 			<div class="cover"></div>
-			<img src="banner_profile2.png" alt="banner	">
+			<img src="banner_profile3.png" alt="banner	">
 		</div>
 	</div>
 	<div class="flex func">

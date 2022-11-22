@@ -21,6 +21,18 @@ export const PatientList = [
 	{ name: "Tayeb Fierro", city: "Monaco", age: 70, sex: 'M',  drug: ["eliquis", "onureg"]},
 ];
 
-export const userType = writable(UserType.Unknown);
+export const PharmaciesInCity = new Map();
+PharmaciesInCity.set("06000", [
+	{ name: "Pharmacie Riviera 24h24 (de garde)", address: "66 av. Jean Médecin 06000 Nice"},
+])
 
-export const PharmaciesInCity = new Map()
+
+export const Specialities = ["oncology", "cardiology", "immunology", "hematology", "fibrosis"]
+
+export const ForumTopics = [
+	{title: "", author: "", date: "", like: 254, dislike: 12, commentNb: 6},
+	{title: ""},
+	{},
+];
+
+export const userType = writable(UserType.Unknown);
