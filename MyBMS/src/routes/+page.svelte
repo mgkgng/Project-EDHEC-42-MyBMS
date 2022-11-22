@@ -142,7 +142,17 @@
 		
 		.first {
 			z-index: 1;
+			gap: 0;
+
 			.patients {
+				.list {
+					width: 100%;
+					.line {
+						width: 100%;
+						display: grid;
+						grid-template-columns: 20% 20% 60%;
+					}
+				}
 			}
 			.actu {
 				.list {
@@ -162,12 +172,19 @@
 			}
 		}
 
+		.second {
+			gap: 0;
+			.forum {
+				width: 66%;
+			}
+		}
+
 	}
 </style>
 
 <script>
     import { goto } from "$app/navigation";
-	import { userType, UserType, ClientName } from "$lib/store.js";
+	import { userType, UserType, ClientName, PatientList } from "$lib/store.js";
     import { onMount } from "svelte";
 
 	let id = "";
@@ -241,11 +258,24 @@
 	</div>
 	<div class="first flex">
 		<div class="container patients">
-			<h2>La liste des patients</h2>
-			<div class="list"></div>
+			<h1>La liste des patients</h1>
+			<div class="list">
+				<div class="line">
+					<p>Nom</p>
+					<p>Ville</p>
+					<p>Prescriptions</p>
+				</div>
+				{#each PatientList as patient}
+				<div class="line">
+					<p>{patient.name}</p>
+					<p>{patient.city}</p>
+					<p>{patient.drug}</p>
+				</div>
+				{/each}
+			</div>
 		</div>
 		<div class="container actu">
-			<h2>Actualités BMS</h2>
+			<h1>Actualités BMS</h1>
 			<div class="list">
 				<div class="line">
 					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Data-at-ASH-2022-Highlight-Innovative-Therapeutic-Platforms-Across-a-Range-of-Blood-Diseases/default.aspx">Bristol Myers Squibb Data at ASH 2022 Highlight Innovative Therapeutic Platforms Across a Range of Blood Diseases</a>
@@ -277,8 +307,10 @@
 		<div class="container"></div>
 	</div>
 	<div class="second flex">
+		<div class="container"></div>
+
 		<div class="container forum">
-			
+			<h1>Forum</h1>
 		</div>
 		
 	</div>
