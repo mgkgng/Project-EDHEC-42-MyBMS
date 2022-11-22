@@ -1,7 +1,6 @@
 <style lang="scss">
 	.index {
 		width: 100%;
-		height: 100%;
 		justify-content: center;
 		align-items: center;
 		color: #000;
@@ -74,7 +73,7 @@
 	.client {
 		padding-top: 60px;
 		width: 100%;
-		height: 100%;
+		gap: 0;
 
 		.profile {
 			position: relative;
@@ -96,6 +95,13 @@
 				font-size: 26px;
 				left: 7.2em;
 				bottom: .5em;
+			}
+		}
+		
+		.grid1 {
+			width: 100%;
+
+			.patients {
 			}
 		}
 	}
@@ -169,10 +175,16 @@
 			<img src="" alt="">
 		</div>
 		<div class="name">{ClientName[$userType]}</div>
-		
 	</div>
-	<div class="actu">
-		<h2>Actualités</h2>
+	<div class="flex grid1">
+		<div class="container patients">
+			<h2>La liste des patients</h2>
+			<div class="list"></div>
+		</div>
+		<div class="actu">
+			<h2>Actualités</h2>
+		</div>
+
 	</div>
 </div>
 {/if}

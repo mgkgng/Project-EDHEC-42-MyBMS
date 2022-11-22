@@ -1,11 +1,13 @@
 <style lang="scss">
 	.app {
+		position: relative;
 		font-family: 'urbanist';
+		width: 100vw;
+		max-width: 100vw;
+		min-height: 100vh;
 	}
 	
 	main {
-		height: 100vh;
-		width: 100vw;
 		background-color: $mauve;
 	}
 </style>
