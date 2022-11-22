@@ -202,11 +202,11 @@
 		<a class="forgot" href="/">Mot de passe oublié?</a>
 		<div class="flex condition">
 			<input type="checkbox" id="cond1">
-			<label for="cond1">J’accepte que mes données soit utilisé par BMS</label>
+			<label for="cond1">J’accepte que mes données soit utilisées par BMS</label>
 		</div>
 		<div class="flex condition">
 			<input type="checkbox" id="cond2">
-			<label for="cond2">J’accepte d’être informé des nouveautées et de recevoir la Newsletter de BMS</label>
+			<label for="cond2">J’accepte d’être informé(e) des nouveautés et de recevoir la Newsletter de BMS</label>
 		</div>
 	</div>
 </div>
