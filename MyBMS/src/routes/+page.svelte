@@ -140,69 +140,106 @@
 			}
 		}
 		
-		.first {
-			z-index: 1;
-			gap: 0;
+		.func {
+			width: 75%;
+			min-height: 45em;
+			opacity: .8;
+
+			h1 {
+				font-family: 'caviar-dreams';
+			}
 
 			.patients {
 				.list {
+					background-color: #fff;
 					width: 80%;
 					height: 80%;
-					overflow: scroll;
+					overflow-y: scroll;
 					border: 2px solid #000;
 					font-size: 13px;
 					.line {
 						text-align: center;
 						width: 100%;
 						display: grid;
-						grid-template-columns: 30% 10% 10% 10% 50%;
+						grid-template-columns: 30% 10% 10% 50%;
 						cursor: pointer;
 
 						&:first-child {
+							width: 100%;
 							border-bottom: 1px solid #000;
 						}
-
 						&:not(:first-child):hover { background-color: transparentize(#000, .9); }
 					}
 				}
 			}
 			.actu {
+				margin-left: 0;
 				.list {
+					background-color: #fff;
 					overflow-y: scroll;
 					.line {
 						display: grid;
-						grid-template-columns: 80% 20%;
+						grid-template-columns: 20% 80%;
 						border-top: 1px solid #000;
 						padding: 2em .5em;
 	
 						&:nth-child(odd) {
 							background: rgb(230, 230, 230);
 						}
-	
 					}
 				}
 			}
-		}
+			.where {
+				margin-left: 0;
 
-		.second {
-			gap: 0;
+				.input {
+					width: 80%;
+					gap: 0.2em;
+					justify-content: center;
+					align-items: center;
+					margin-bottom: .5em;
+					input {
+						width: 80%;
+						padding-left: .3em;
+						height: 2em;
+						border-radius: .2em;
+					}
+					button {
+						width: 20%;
+						height: 2.5em;
+						font-size: 12px;
+					}
+				}
+				.list {
+					background-color: #fff;
+					border: 2px solid #000;
+					width: 80%;
+					height: 80%;
+					position: relative;
+					
+					.no-result {
+						position: absolute;
+						top: 45%;
+						left: 35%;
+					}
+				}
+			}
 			.forum {
-				width: 66%;
+				margin-top: 0;
+				width: 900px;
 			}
 		}
-
 	}
 </style>
 
 <script>
-    import { goto } from "$app/navigation";
 	import { userType, UserType, ClientName, PatientList } from "$lib/store.js";
     import { onMount } from "svelte";
 
 	let id = "";
 	let password = "";
-	let loaded =false;
-	$: console.log(ClientName, $userType);
+	let loaded = false;
+	let searchResult = [];
 
 	onMount(() => {
 		let cookie = document.cookie;
@@ -268,13 +305,12 @@
 			<img src="banner_profile2.png" alt="banner	">
 		</div>
 	</div>
-	<div class="first flex">
-		<div class="container patients">
-			<h1>La liste des patients</h1>
+	<div class="flex func">
+		<div class="wrap-container patients">
+			<h1>Vos patients</h1>
 			<div class="list">
 				<div class="line">
 					<p>Nom</p>
-					<p>Ville</p>
 					<p>Age</p>
 					<p>Sexe</p>
 					<p>Prescriptions</p>
@@ -282,50 +318,60 @@
 				{#each PatientList as patient}
 				<div class="line info">
 					<p>{patient.name}</p>
-					<p>{patient.city}</p>
 					<p>{patient.age}</p>
 					<p>{patient.sex}</p>
-					<p>{patient.drug}</p>
+					<p>{patient.drug.toString().toUpperCase().split(",").join(", ")}</p>
 				</div>
 				{/each}
 			</div>
 		</div>
-		<div class="container actu">
+		<div class="wrap-container actu">
 			<h1>Actualités BMS</h1>
 			<div class="list">
 				<div class="line">
-					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Data-at-ASH-2022-Highlight-Innovative-Therapeutic-Platforms-Across-a-Range-of-Blood-Diseases/default.aspx">Bristol Myers Squibb Data at ASH 2022 Highlight Innovative Therapeutic Platforms Across a Range of Blood Diseases</a>
 					<p>11/21/2022</p>
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Data-at-ASH-2022-Highlight-Innovative-Therapeutic-Platforms-Across-a-Range-of-Blood-Diseases/default.aspx">Bristol Myers Squibb Data at ASH 2022 Highlight Innovative Therapeutic Platforms Across a Range of Blood Diseases</a>
 				</div>
 				<div class="line">
-					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-to-Participate-in-the-Wolfe-Research-Healthcare-Conference/default.aspx">Bristol Myers Squibb to Participate in the Wolfe Research Healthcare Conference</a>
 					<p>11/09/2022</p>
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-to-Participate-in-the-Wolfe-Research-Healthcare-Conference/default.aspx">Bristol Myers Squibb to Participate in the Wolfe Research Healthcare Conference</a>
 				</div>
 				<div class="line">
+					<p>11/02/2022</p>
 					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Data-Reinforcing-Impact-of-Bristol-Myers-Squibb-Cardiovascular-Portfolio-to-be-Presented-at-American-Heart-Association-Scientific-Sessions-2022/default.aspx">
 						Data Reinforcing Impact of Bristol Myers Squibb Cardiovascular Portfolio to be Presented at American Heart Association Scientific Sessions 2022</a>
-					<p>11/02/2022</p>
 				</div>
 				<div class="line">
-					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Announces-Positive-Topline-Results-of-Phase-3-COMMANDS-Trial/default.aspx">Bristol Myers Squibb Announces Positive Topline Results of Phase 3 COMMANDS Trial</a>
 					<p>10/31/2022</p>
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Announces-Positive-Topline-Results-of-Phase-3-COMMANDS-Trial/default.aspx">Bristol Myers Squibb Announces Positive Topline Results of Phase 3 COMMANDS Trial</a>
 				</div>
 				<div class="line">
-					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/New-Zeposia-ozanimod-Data-Highlight-COVID-19-Outcomes-and-Preservation-of-Long-Term-Cognitive-Function-from-Separate-Analyses-in-Patients-with-Relapsing-Forms-of-Multiple-Sclerosis/default.aspx">New Zeposia (ozanimod) Data Highlight COVID-19 Outcomes and Preservation of Long-Term Cognitive Function from Separate Analyses in Patients with Relapsing Forms of Multiple Sclerosis</a>
 					<p>10/26/2022</p>
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/New-Zeposia-ozanimod-Data-Highlight-COVID-19-Outcomes-and-Preservation-of-Long-Term-Cognitive-Function-from-Separate-Analyses-in-Patients-with-Relapsing-Forms-of-Multiple-Sclerosis/default.aspx">New Zeposia (ozanimod) Data Highlight COVID-19 Outcomes and Preservation of Long-Term Cognitive Function from Separate Analyses in Patients with Relapsing Forms of Multiple Sclerosis</a>
 				</div>
 				<div class="line">
-					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Reports-Third-Quarter-Financial-Results-for-2022/default.aspx">Bristol Myers Squibb Reports Third Quarter Financial Results for 2022</a>
 					<p>10/25/2022</p>
+					<a href="https://investors.bms.com/iframes/press-releases/press-release-details/2022/Bristol-Myers-Squibb-Reports-Third-Quarter-Financial-Results-for-2022/default.aspx">Bristol Myers Squibb Reports Third Quarter Financial Results for 2022</a>
 				</div>
 			</div>
 		</div>
-		<div class="container"></div>
+		<div class="wrap-container where">
+			<h1>Où trouver nos produits</h1>
+			<div class="flex input">
+				<input type="text" placeholder="Mettez le nom de la ville">
+				<button>Recherche</button>
+			</div>
+			<div class="list">
+				{#if !searchResult.length}
+				<div class="no-result">Pas de résultat</div>
+				{:else}
+				{/if}
+			</div>
+		</div>
 	</div>
-	<div class="second flex">
-		<div class="container"></div>
-
-		<div class="container forum">
+	
+	<div class="flex func">
+		<div class="wrap-container forum">
 			<h1>Forum</h1>
 		</div>
 		

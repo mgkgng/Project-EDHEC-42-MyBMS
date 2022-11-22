@@ -18,16 +18,23 @@ button {
 }
 .vflex { flex-direction: column }
 
-.container {
+.wrap-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #fff;
-	width: 33%;
+	width: 450px;
+	min-width: 450px;
 	height: 45em;
 	border: 2px solid transparentize(#000, .85);
+	margin: 2em;
+	background: $grey;
+	border-radius: 0 4em 0 0;
 }
 
+@font-face {
+	font-family: 'caviar-dreams';
+	src: URL('/fonts/CaviarDreams.ttf') format('truetype');
+}
 
 @font-face {
 	font-family: 'urbanist';
