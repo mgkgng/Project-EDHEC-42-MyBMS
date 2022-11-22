@@ -265,7 +265,7 @@
 		<div class="type">Cardiologue</div>
 		<div class="banner">
 			<div class="cover"></div>
-			<img src="banner_profile1.png" alt="banner	">
+			<img src="banner_profile2.png" alt="banner	">
 		</div>
 	</div>
 	<div class="first flex">
