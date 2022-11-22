@@ -146,11 +146,23 @@
 
 			.patients {
 				.list {
-					width: 100%;
+					width: 80%;
+					height: 80%;
+					overflow: scroll;
+					border: 2px solid #000;
+					font-size: 13px;
 					.line {
+						text-align: center;
 						width: 100%;
 						display: grid;
-						grid-template-columns: 20% 10% 10% 10% 50%;
+						grid-template-columns: 30% 10% 10% 10% 50%;
+						cursor: pointer;
+
+						&:first-child {
+							border-bottom: 1px solid #000;
+						}
+
+						&:not(:first-child):hover { background-color: transparentize(#000, .9); }
 					}
 				}
 			}
@@ -268,7 +280,7 @@
 					<p>Prescriptions</p>
 				</div>
 				{#each PatientList as patient}
-				<div class="line">
+				<div class="line info">
 					<p>{patient.name}</p>
 					<p>{patient.city}</p>
 					<p>{patient.age}</p>

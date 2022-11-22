@@ -8,8 +8,6 @@ export const UserType = {
 
 export const ClientName = [undefined, "Samuel Philippe", "Sarah Duval"];
 
-export const userType = writable(UserType.Unknown);
-
 export const PatientList = [
 	{ name: "Yoann Noyer", city: "Antibes", age: 45, sex: 'M', drug: ["c"]},
 	{ name: "Emilio Barsotti", city: "Monaco", age: 65, sex: 'M', drug: ["b"]},
@@ -22,3 +20,5 @@ export const PatientList = [
 	{ name: "Mathias De Leon", city: "Antibes", age: 69, sex: 'M',  drug: ["a", "d"]},
 	{ name: "Tayeb Fierro", city: "Monaco", age: 70, sex: 'M',  drug: ["c", "d"]},
 ];
+
+export const userType = writable(UserType.Unknown);
