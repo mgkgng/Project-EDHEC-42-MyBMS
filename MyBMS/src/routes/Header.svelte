@@ -2,24 +2,22 @@
 	header {
 		position: absolute;
 		width: 100%;
-		height: 60px;
+		height: 65px;
 		background-color: #fff;
-
-		padding: .5em .8em;
-
+		
 		font-family: 'urbanist';
 
 		.logo {
 			display: flex;
 			align-items: center;
 			height: 100%;
-			padding: .3em .4em;
-			gap: .3em;
+			padding: .3em .5em;
+			gap: .2em;
 			user-select: none;
 			cursor: pointer;
 	
 			img {
-				height: 80%;
+				max-height: 45px;
 				padding-bottom: 1em;
 			}
 	

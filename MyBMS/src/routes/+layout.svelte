@@ -1,30 +1,20 @@
 <style lang="scss">
-	html {
+	main {
 		height: 100vh;
 		width: 100vw;
-		margin: 0;
-		font-family: 'urbanist';
-	}
-
-	body {
-		margin: 0;
-	}
-
-	.app {
-		min-height: 100vh;
-		background-color: $background;
+		background-color: $mauve;
 	}
 
 </style>
 
 <script>
 	import Header from './Header.svelte';
+	import Footer from './Footer.svelte';
 </script>
 
-<div class="app">
-	<Header />
-	<main>
-		<slot />
-	</main>
-</div>
+<Header />
+<main>
+	<slot />
+</main>
+<Footer />
 

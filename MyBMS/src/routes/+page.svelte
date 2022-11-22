@@ -1,25 +1,21 @@
 <style lang="scss">
 	.container {
 		display: flex;
-		min-height: 90vh;
 		justify-content: center;
 		align-items: center;
 
 		color: #000;
-		font-family: 'urbanist';
 
 		gap: 3em;
 		user-select: none;
 	}
 
 	.slogan {
-		// width: 30vw;
-		// height: 50vh;
 		font-size: 30px;
 	}
 
 	.login {
-		width: 450px;
+		width: 30em;
 		height: 250px;
 		background-color: #fff;
 
@@ -36,7 +32,6 @@
 		h2 {
 			margin: .5em;
 		}
-
 	}
 
 	.flemme {
@@ -71,13 +66,13 @@
 		align-items: center;
 
 		button {
-			background-color: $background;
+			background-color: $mauve;
 			width: 5em;
 			height: 100%;
 			border: none;
 			border-radius: .5em;
 			cursor: pointer;
-			transition: .5s;
+			transition: .2s;
 
 			&:hover {
 				background-color: transparentize($main, 0.1);
