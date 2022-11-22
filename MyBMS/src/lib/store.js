@@ -23,4 +23,4 @@ export const PatientList = [
 
 export const userType = writable(UserType.Unknown);
 
-export const PharmaciesInCity = new Map()
+export const PharmaciesInCity = new Map();
