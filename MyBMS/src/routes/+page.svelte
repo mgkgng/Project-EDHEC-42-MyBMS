@@ -311,6 +311,14 @@
 								align-items: center;
 								gap: 0;
 								padding: .5em 0;
+
+								&:hover {
+									background-color: rgb(230, 230, 230);	
+								}
+							}
+							.pages {
+								margin: 1.5em;
+								justify-content: center;
 							}
 						}
 					}
@@ -514,10 +522,12 @@
 							<p>{topic.date}</p>
 						</div>
 						{/each}
-						<div class="pages">
-							{#each Array(6) as _, i}
+						<div class="flex pages">
+							<a href="/">&lt</a>
+							{#each Array(10) as _, i}
 								<a href="/">{i + 1}</a>
 							{/each}
+							<a href="/">&gt</a>
 						</div>
 					</div>
 				</div>
