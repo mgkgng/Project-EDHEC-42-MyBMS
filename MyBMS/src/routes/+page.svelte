@@ -375,7 +375,7 @@
 	</div>
 	<div class="flex func">
 		<div class="wrap-container patients">
-			<h1>Vos patients</h1>
+			<h1>Vos patients MyBMS</h1>
 			<div class="list">
 				<div class="line">
 					<p>Nom</p>
