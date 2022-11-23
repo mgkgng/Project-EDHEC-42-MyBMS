@@ -178,6 +178,14 @@
 					}
 				}
 			}
+			.patient {
+				.list {
+					background-color: #fff;
+					padding: 0 2em;
+					border: 2px solid #000;
+					border-radius: .3em;
+				}
+			}
 			.actu {
 				margin-left: 0;
 				.list {
@@ -284,7 +292,7 @@
 								padding: .2em 0;
 								border-bottom: 1px solid #000;
 								display: grid;
-								grid-template-columns: 40% 12% 12% 12% 12% 12%;
+								grid-template-columns: 40% 15% 12% 9% 12% 12%;
 							}
 						}
 					}
@@ -295,7 +303,8 @@
 </style>
 
 <script>
-	import { userType, UserType, ClientName, PatientList, ForumTopics, PharmaciesInCity } from "$lib/store.js";
+	import { userType, UserType, ClientName, PatientList, 
+		ForumTopics, PharmaciesInCity, Specialities } from "$lib/store.js";
     import { onMount } from "svelte";
 
 	let id = "";
@@ -303,10 +312,14 @@
 	let loaded = false;
 	let searchCode = "";
 	let searchResult = [];
-	let speciality = "";
+	let speciality = Specialities[0];
 
 	function cutTitle(title) {
-		return ((title.length > 30) ? title.substr(0, 28) + '...' : title);
+		return ((title.length > 28) ? title.substr(0, 28) + '...' : title);
+	}
+
+	function sortTopics(topics){
+		return topics.sort((a, b) => { return b.like - a.like; });
 	}
 
 	onMount(() => {
@@ -456,13 +469,10 @@
 			<div class="forum-body">
 				<div class="flex choice">
 					<p>Sélectionnez la spécialité:</p>
-					<select>
-						<option value="Option 1">Option 1</option>
-						<option value="Option 2">Option 2</option>
-						<option value="Option 3">Option 3</option>
-						<option value="Option 4">Option 4</option>
-						<option value="Option 5">Option 5</option>
-						<option value="Option 6">Option that has too long of a value to fit</option>
+					<select value={speciality}>
+						{#each Specialities as spe}
+						<option value={spe}>{spe}</option>
+						{/each}
 					</select>
 				</div>
 				<div class="vflex content">
@@ -476,7 +486,7 @@
 							<p>Vues</p>
 							<p>Date de Màj</p>
 						</div>
-						{#each ForumTopics as topic}
+						{#each sortTopics(ForumTopics) as topic}
 						<div class="line">
 							<p>{cutTitle(topic.title)}</p>
 							<p>{topic.author}</p>
