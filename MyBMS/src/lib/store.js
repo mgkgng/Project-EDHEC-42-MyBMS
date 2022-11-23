@@ -36,7 +36,7 @@ PharmaciesInCity.set("06400", [
 	{ name: "Pharmacie du Pont Carnot", address: "2 bd Carnot 06400 Cannes"},
 ])
 
-export const Specialities = ["oncology", "cardiology", "immunology", "hematology", "fibrosis"]
+export const Specialities = ["Oncologie", "Cardiologie", "Immunologie", "Hématologie", "Fibrosis"]
 
 export const ForumTopics = [
 	{title: "Somnolence après prise du traitement le matin", author: "Marshall P.", date: "12/11/2022", like: 254, commentNb: 6, visitNb: 2514},
