@@ -89,6 +89,7 @@
 
 			display: flex;
 			align-items: center;
+			border-bottom: 2px solid $white-t6;
 
 			.img-wrapper {
 				border: 2px solid $white-t6;
@@ -146,9 +147,15 @@
 		}
 		
 		.func {
-			width: 75%;
+			width: 100%;
 			min-height: 45em;
 			opacity: .8;
+			align-items: center;
+			justify-content: center;
+
+			// &:first-child {
+			// 	border-top: 5px solid $white-t6;
+			// }
 
 			h1 {
 				font-family: 'caviar-dreams';
@@ -257,7 +264,7 @@
 			}
 			.forum {
 				margin-top: 0;
-				width: 900px;
+				width: 1200px;
 
 				.forum-body {
 					width: 90%;
@@ -294,7 +301,7 @@
 
 						.list {
 							background-color: #fff;
-							width: 75%;
+							width: 85%;
 							height: 70%;
 							border: 2px solid #000;
 							padding: 0 2em;
@@ -302,11 +309,12 @@
 
 							.line {
 								width: 100%;
-								height: 2em;
-								padding: .2em 0;
 								border-bottom: 1px solid #000;
 								display: grid;
-								grid-template-columns: 40% 15% 12% 9% 12% 12%;
+								grid-template-columns: 60% 10% 8% 6% 8% 8%;
+								align-items: center;
+								gap: 0;
+								padding: .5em 0;
 							}
 						}
 					}
@@ -329,7 +337,7 @@
 	let speciality = Specialities[0];
 
 	function cutTitle(title) {
-		return ((title.length > 28) ? title.substr(0, 28) + '...' : title);
+		return ((title.length > 58) ? title.substr(0, 58) + '...' : title);
 	}
 
 	function sortTopics(topics){
@@ -490,7 +498,7 @@
 					</select>
 				</div>
 				<div class="vflex content">
-					<h2>Spécialité {speciality}</h2>
+					<h2>Forum Spécialité {speciality}</h2>
 					<div class="list">
 						<div class="line" style="font-size: 13px;">
 							<p>Sujet</p>
@@ -501,8 +509,8 @@
 							<p>Date de Màj</p>
 						</div>
 						{#each sortTopics(ForumTopics) as topic}
-						<div class="line">
-							<p>{cutTitle(topic.title)}</p>
+						<div class="flex line">
+							<a href="">{cutTitle(topic.title)}</a>
 							<p>{topic.author}</p>
 							<p>{topic.like}</p>
 							<p>{topic.commentNb}</p>
@@ -510,7 +518,11 @@
 							<p>{topic.date}</p>
 						</div>
 						{/each}
-						<div></div>
+						<div class="pages">
+							{#each Array(6) as _, i}
+								<a href="/">{i + 1}</a>
+							{/each}
+						</div>
 					</div>
 				</div>
 			</div>

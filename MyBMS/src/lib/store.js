@@ -36,7 +36,7 @@ PharmaciesInCity.set("06400", [
 	{ name: "Pharmacie du Pont Carnot", address: "2 bd Carnot 06400 Cannes"},
 ])
 
-export const Specialities = ["Oncologie", "Cardiologie", "Immunologie", "Hématologie", "Fibrosis"]
+export const Specialities = ["Cardiologie", "Oncologie", "Immunologie", "Hématologie", "Fibrosis"]
 
 export const ForumTopics = [
 	{title: "Somnolence après prise du traitement le matin", author: "Marshall P.", date: "12/11/2022", like: 254, commentNb: 6, visitNb: 2514},
@@ -47,7 +47,7 @@ export const ForumTopics = [
 	{title: "Douleurs post ponction lombaire", author: "Robert N.", date: "7/11/2022", like: 465, commentNb: 54, visitNb: 2737},
 	{title: "[Conseils] Quelle alimentation pour réduire le cholestérol", author: "Rumi W.", date: "19/11/2022", like: 132, commentNb: 6, visitNb: 437},
 	{title: "Compatibilité avec un traitement anxiolytique ?", author: "Tristan F.", date: "20/11/2022", like: 57, commentNb: 13, visitNb: 256},
-	{title: "Mon apnée du sommeil a disparu", author: "Gontran A.", date: "1/11/2022", like: 210, commentNb: 43, visitNb: 88},
+	{title: "Mon apnée du sommeil a disparu", author: "Gontran A.", date: "1/11/2022", like: 210, commentNb: 43, visitNb: 880},
 	{title: "Reprendre une activité sportive après un traitement", author: "Marin G.", date: "5/11/2022", like: 32, commentNb: 3, visitNb: 132},
 ];
 
