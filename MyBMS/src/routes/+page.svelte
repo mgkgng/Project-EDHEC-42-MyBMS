@@ -229,7 +229,8 @@
 					width: 80%;
 					height: 80%;
 					position: relative;
-					
+					overflow: hidden;
+
 					.no-result {
 						position: absolute;
 						top: 45%;
@@ -238,6 +239,19 @@
 					.line {
 						display: grid;
 						grid-template-columns: 45% 55%;
+						padding-left: .4em;
+						width: 100%;
+
+						&:first-child {
+							border-bottom: 1px solid #000;
+						}
+
+						p {
+							padding: 0 .5em;
+							&:first-child {
+								border-right: 1px solid #000;
+							}
+						}
 					}
 				}
 			}
@@ -451,7 +465,7 @@
 				{:else}
 				<div class="line">
 					<p>Nom</p>
-					<p>address</p>
+					<p>Address</p>
 				</div>
 				{#each searchResult as result}
 				<div class="line">
