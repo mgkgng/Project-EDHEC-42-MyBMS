@@ -153,10 +153,6 @@
 			align-items: center;
 			justify-content: center;
 
-			// &:first-child {
-			// 	border-top: 5px solid $white-t6;
-			// }
-
 			h1 {
 				font-family: 'caviar-dreams';
 			}
