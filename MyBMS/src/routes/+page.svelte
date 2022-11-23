@@ -387,7 +387,6 @@
 		</div>
 	</div>
 	<div class="flex func">
-		{#if userType == UserType.Doctor}
 		<div class="wrap-container patients">
 			<h1>Vos patients MyBMS</h1>
 			<div class="list">
@@ -407,14 +406,6 @@
 				{/each}
 			</div>
 		</div>
-		{:else}
-		<div class="wrap-container patient">
-			<h1>Vos infos</h1>
-			<div class="list">
-				<p>Votre precscription: HYDREA, ELIQUIS, REBLOZYL</p>
-			</div>
-		</div>
-		{/if}
 		<div class="wrap-container actu">
 			<h1>Actualités BMS</h1>
 			<div class="list">
