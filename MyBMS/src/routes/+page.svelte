@@ -112,7 +112,7 @@
 				color: #fff;
 				font-size: 26px;
 				left: 8em;
-				bottom: 1em;
+				bottom: 1.4em;
 				z-index: 1;
 			}
 
@@ -121,7 +121,7 @@
 				color: #fff;
 				font-size: 15px;
 				left: 14em;
-				bottom: .6em;
+				bottom: 1em;
 				z-index: 1;
 			}
 
@@ -426,7 +426,7 @@
 		<div class="wrap-container where">
 			<h1>Où trouver nos produits</h1>
 			<div class="flex input">
-				<input type="text" placeholder="Mettez votre code postale" bind:value={searchCode}>
+				<input type="text" placeholder="Code postal" bind:value={searchCode}>
 				<button on:click={() => {
 					if (PharmaciesInCity.has(searchCode))
 						searchResult = PharmaciesInCity.get(searchCode);
@@ -469,7 +469,7 @@
 					<h2>Spécialité {speciality}</h2>
 					<div class="list">
 						<div class="line" style="font-size: 13px;">
-							<p>Titre</p>
+							<p>Sujet</p>
 							<p>Auteur</p>
 							<p>Likes</p>
 							<p>Cmts</p>
