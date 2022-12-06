@@ -192,21 +192,91 @@
 
 			.info-patient {
 				.first {
-					height: 50%;
+					width: 100%;
+					align-items: center;
+					height: 30%;
+					gap: .2em;
+					.list {
+						border: 2px solid #000;
+						width: 75%;
+						height: 100%;
+						padding: 1em 1.5em;
+						gap: 0;
+						background-color: rgb(230, 230, 230);
+
+						.line {
+							width: 100%;
+							display: grid;
+							height: 2em;
+							grid-template-columns: 38% 62%;
+						}
+						p {
+							margin: 0;
+						}
+					}
 				}
 				.second {
-					height: 50%;
-				}
+					.content {
+						gap: 0;
+						align-items: center;
+						background-color: rgb(230, 230, 230);
+						border: 2px solid #000;
+						
+						textarea {
+							width: 25em;
+							height: 15em;
+							resize: none;
+							padding: .5em;
+						}
+	
+						.choice {
+							gap: 0;
+							padding: 0;
+							width: 65%;
+							height: 1.5em;
+							justify-content: center;
+							align-items: center;
+							border: 1px solid #000;
+	
+						}
+						.choice input[type="radio"] {
+							display: none;
+						}
+	
+						.choice label {
+							display: inline-block;
+							border: 1px solid #000;
+							border-left: none;
+							width: 1.2em;
+							height: 100%;
+							padding: 0 .2em;
+							text-align: center;
+							font-size: 17px;
+							cursor: pointer;
 
-				.list {
-					position: relative;
-					width: 100%;
-					height: 100%;
-					button {
-						position: absolute;
-						top: 0;
-						right: 0;
+							&:last-child {
+								border-right: 0;
+							}
+	
+						}
+						.choice input[type="radio"]:checked+label { background-color: red; }
+	
+						button {
+							margin: .5em;
+							width: 5em;
+							height: 3em;
+							border-radius: .3em;
+							transition: .2s;
+	
+							&:hover {
+								background-color: $main;
+							}
+						}
 					}
+					p {
+						margin: 1em;
+					}
+					
 				}
 			}
 			.actu {
@@ -303,7 +373,6 @@
 					}
 					.content {
 						width: 100%;
-						height: 563px;
 						background-color: rgb(230, 230, 230);
 						justify-content: center;
 						align-items: center;
@@ -359,6 +428,7 @@
 	let searchCode = "";
 	let searchResult = [];
 	let speciality = Specialities[0];
+	let patientState;
 
 	function cutTitle(title) {
 		return ((title.length > 58) ? title.substr(0, 58) + '...' : title);
@@ -425,15 +495,17 @@
 		<div class="img-wrapper">
 			<img src="sarah2.jpg" alt="sarah">
 		</div>
+		{#if $userType == UserType.Doctor}
 		<div class="name">{ClientName[$userType]}</div>
 		<div class="type">Cardiologue</div>
+		{/if}
 		<div class="banner">
 			<div class="cover"></div>
 			<img src="banner_profile3.png" alt="banner	">
 		</div>
 	</div>
 	<div class="flex func">
-		{#if $userType == UserType.Unknown}
+		{#if $userType == UserType.Doctor}
 		<div class="wrap-container patients">
 			<h1>Vos patients MyBMS</h1>
 			<div class="list">
@@ -455,15 +527,50 @@
 		</div>
 		{:else}
 		<div class="wrap-container info-patient">
-			<div class="first">
-				<h1>Information patient</h1>
-				<div class="list">
-					<p>Prescriptions</p>
-					<button>modifier</button>
+			<div class="vflex first">
+				<h1>Vos informations patient</h1>
+				<div class="vflex list">
+					<div class="flex line">
+						<p>Votre médecin:</p>
+						<p>Mme Sarah Duval</p>
+					</div>
+					<div class="flex line">
+						<p>Mes prescriptions:</p>
+						<p>HYDREA, IMNOVID</p>
+					</div>
 				</div>
 			</div>
 			<div class="second">
 				<h1>Avez-vous besoin d'aides?</h1>
+
+				<div class="vflex content">
+					<p>Avez vous une question?</p>
+					<textarea placeholder="Écrivez votre question ici"></textarea>
+					<p>Quel est l'urgence de votre besoin?</p>
+					<div class="flex choice">
+						<input type=radio id="stat1" bind:group={patientState} name="patientState" value={0}>
+						<label for="stat1">1</label>
+						<input type=radio id="stat2" bind:group={patientState} name="patientState" value={1}>
+						<label for="stat2">2</label>
+						<input type=radio id="stat3" bind:group={patientState} name="patientState" value={2}>
+						<label for="stat3">3</label>
+						<input type=radio id="stat4" bind:group={patientState} name="patientState" value={3}>
+						<label for="stat4">4</label>
+						<input type=radio id="stat5" bind:group={patientState} name="patientState" value={4}>
+						<label for="stat5">5</label>
+						<input type=radio id="stat6" bind:group={patientState} name="patientState" value={5}>
+						<label for="stat6">6</label>
+						<input type=radio id="stat7" bind:group={patientState} name="patientState" value={6}>
+						<label for="stat7">7</label>
+						<input type=radio id="stat8" bind:group={patientState} name="patientState" value={7}>
+						<label for="stat8">8</label>
+						<input type=radio id="stat9" bind:group={patientState} name="patientState" value={8}>
+						<label for="stat9">9</label>
+						<input type=radio id="stat10" bind:group={patientState} name="patientState" value={9}>
+						<label for="stat10">10</label>
+					</div>
+					<button on:click={() => { window.location.reload(); }}>Envoyer</button>
+				</div>
 			</div>
 		</div>
 		{/if}
@@ -501,6 +608,7 @@
 			<h1>{($userType == UserType.Doctor) ? "Où trouver nos produits" : "Où trouver vos produits"}</h1>
 			<div class="flex input">
 				<input type="text" placeholder="Code postal" bind:value={searchCode}>
+
 				<button on:click={() => {
 					if (PharmaciesInCity.has(searchCode))
 						searchResult = PharmaciesInCity.get(searchCode);
@@ -528,6 +636,7 @@
 		<div class="wrap-container forum">
 			<h1>Forum</h1>
 			<div class="forum-body">
+				{#if $userType == UserType.Doctor}
 				<div class="flex choice">
 					<p>Sélectionnez la spécialité:</p>
 					<select value={speciality}>
@@ -536,7 +645,8 @@
 						{/each}
 					</select>
 				</div>
-				<div class="vflex content">
+				{/if}
+				<div class="vflex content" style={($userType == UserType.Doctor) ? "height: 563px;" : "height: 100%;"}>
 					<h2>Forum Spécialité {speciality}</h2>
 					<div class="list">
 						<div class="line" style="font-size: 13px;">
