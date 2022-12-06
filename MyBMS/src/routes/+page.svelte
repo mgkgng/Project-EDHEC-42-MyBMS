@@ -189,6 +189,26 @@
 					border-radius: .3em;
 				}
 			}
+
+			.info-patient {
+				.first {
+					height: 50%;
+				}
+				.second {
+					height: 50%;
+				}
+
+				.list {
+					position: relative;
+					width: 100%;
+					height: 100%;
+					button {
+						position: absolute;
+						top: 0;
+						right: 0;
+					}
+				}
+			}
 			.actu {
 				margin-left: 0;
 				.list {
@@ -413,6 +433,7 @@
 		</div>
 	</div>
 	<div class="flex func">
+		{#if $userType == UserType.Unknown}
 		<div class="wrap-container patients">
 			<h1>Vos patients MyBMS</h1>
 			<div class="list">
@@ -432,6 +453,20 @@
 				{/each}
 			</div>
 		</div>
+		{:else}
+		<div class="wrap-container info-patient">
+			<div class="first">
+				<h1>Information patient</h1>
+				<div class="list">
+					<p>Prescriptions</p>
+					<button>modifier</button>
+				</div>
+			</div>
+			<div class="second">
+				<h1>Avez-vous besoin d'aides?</h1>
+			</div>
+		</div>
+		{/if}
 		<div class="wrap-container actu">
 			<h1>Actualités BMS</h1>
 			<div class="list">
@@ -463,7 +498,7 @@
 			</div>
 		</div>
 		<div class="wrap-container where">
-			<h1>Où trouver nos produits</h1>
+			<h1>{($userType == UserType.Doctor) ? "Où trouver nos produits" : "Où trouver vos produits"}</h1>
 			<div class="flex input">
 				<input type="text" placeholder="Code postal" bind:value={searchCode}>
 				<button on:click={() => {
