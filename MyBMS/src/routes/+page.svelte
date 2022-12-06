@@ -493,7 +493,7 @@
 <div class="vflex client">
 	<div class="profile">
 		<div class="img-wrapper">
-			<img src="sarah2.jpg" alt="sarah">
+			<img src={($userType == UserType.Doctor) ? "sarah2.jpg" : "default_user.png"} alt="user">
 		</div>
 		{#if $userType == UserType.Doctor}
 		<div class="name">{ClientName[$userType]}</div>
@@ -541,12 +541,12 @@
 				</div>
 			</div>
 			<div class="second">
-				<h1>Avez-vous besoin d'aides?</h1>
+				<h1>Avez-vous besoin d'aide ?</h1>
 
 				<div class="vflex content">
-					<p>Avez vous une question?</p>
+					<p>Avez-vous une question?</p>
 					<textarea placeholder="Écrivez votre question ici"></textarea>
-					<p>Quel est l'urgence de votre besoin?</p>
+					<p>Quelle est l'urgence de votre besoin ?</p>
 					<div class="flex choice">
 						<input type=radio id="stat1" bind:group={patientState} name="patientState" value={0}>
 						<label for="stat1">1</label>
